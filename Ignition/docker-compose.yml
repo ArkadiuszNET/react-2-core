@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  webapi:
+    image: ${DOCKER_REGISTRY-}webapi
+    build:
+      context: .
+      dockerfile: WebAPI/Dockerfile
+    environment:
+     - ASPNETCORE_URLS=https://*:443;http://*:80
+     - ASPNETCORE_Kestrel__Certificates__Default__Password=defaultPassword
+     - ASPNETCORE_Kestrel__Certificates__Default__Path=/usr/local/share/ca-certificates/ignition.pfx
+    ports:
+     - 5055:80
+     - 5051:443
