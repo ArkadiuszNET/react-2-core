@@ -1,6 +1,15 @@
 version: '3.4'
 
 services:
+  client:
+    image: ${DOCKER_REGISTRY-}frontend
+    build:
+      context: Frontend/client
+      dockerfile: Dockerfile
+    environment:
+      - REACT_APP_NAME=Development
+    ports:
+      - 5040:3000
   webapi:
     image: ${DOCKER_REGISTRY-}webapi
     build:
