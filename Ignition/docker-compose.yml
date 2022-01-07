@@ -6,10 +6,12 @@ services:
     build:
       context: Frontend/client
       dockerfile: Dockerfile
+      args:
+        - REACT_APP_NAME=Ignition
     environment:
-      - REACT_APP_NAME=Development
+      - REACT_APP_NAME=Ignition
     ports:
-      - 5040:3000
+      - 5040:80
   webapi:
     image: ${DOCKER_REGISTRY-}webapi
     build:
